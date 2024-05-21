@@ -1,19 +1,9 @@
-/*
- * Name: TODO-App-Backend
- * Description: TODO-App-Backend with Node.js, Express, MongoDB
- * Author: Md. Samiur Rahman (Mukul)
- * Version: v1.0.0
- * Date: 14/6/2022
- * Last Modified: 14/6/2022
- *
- */
-
 // imports modules & dependencies
 const express = require("express");
 const env = require("dotenv");
 const favicon = require("serve-favicon");
-var path = require("path");
-var cors = require("cors");
+const path = require("path");
+const cors = require("cors");
 
 // imports routes, middleware, and configs
 const todos = require("./src/routes/todos.route");
@@ -29,7 +19,7 @@ const app = express();
 const connectDatabase = require("./src/db/connect");
 connectDatabase();
 
-// corss-origin-allow-all
+// cors setup
 app.use(cors());
 
 // sets favicon in routes
@@ -46,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // sets default route
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to TODO Node.js application backend." });
+  res.status(200).send("Welcome to TODO Node.js application backend.");
 });
 
 // todos api routes

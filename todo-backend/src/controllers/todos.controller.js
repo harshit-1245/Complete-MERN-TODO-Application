@@ -40,18 +40,18 @@ exports.getATodo = async (req, res) => {
 
 // make a controller for create a todo
 exports.createATodo = async (req, res) => {
-  const newTodo = new Todo(req.body);
-  await newTodo.save((err) => {
-    if (err) {
-      res.status(500).json({
-        message: err.message,
-      });
-    } else {
-      res.status(201).json({
-        message: "Create a new todo successfully.",
-      });
-    }
-  });
+  try {
+    const newTodo = new Todo(req.body);
+    await newTodo.save();
+    res.status(201).json({
+      message: "Create a new todo successfully.",
+    });
+  } catch (err) {
+    
+    res.status(500).json({
+      message: err.message,
+    });
+  }
 };
 
 // make a controller for create many todos

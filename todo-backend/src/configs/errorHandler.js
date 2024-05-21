@@ -1,6 +1,7 @@
 // 404 - not found error handler
 exports.notFoundRoute = (req, res, next) => {
   res.status(404).json({ message: "Sorry! Your request page was not found." });
+  next()
 };
 
 exports.errorHandler = (err, req, res, next) => {
